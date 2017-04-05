@@ -1,5 +1,6 @@
 * [pybites/100DaysOfCode original repo](https://github.com/pybites/100DaysOfCode)
-* [Code Challenges](http://pybit.es/pages/challenges.html)
+* [Challenge list and About here.](http://pybit.es/pages/challenges.html)
+
 ## Progress Log
 | Day | Date | Sources | Progress | Notes |
 | --- | --- | --- | --- | --- |
