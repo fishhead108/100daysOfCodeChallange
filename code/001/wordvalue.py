@@ -15,8 +15,8 @@ def load_words(filename=None):
 def calc_word_value(word):
     """Calculate the value of the word entered into function
     using imported constant mapping LETTER_SCORES"""
-    cost = sum([LETTER_SCORES[x] for x in word.upper() if x.isalpha()])
-    return cost
+    # sum(LETTER_SCORES.get(char.upper(), 0) for char in word)
+    return sum([LETTER_SCORES[char] for char in word.upper() if char.isalpha()])
 
 def max_word_value(wordlist=None):
     """Calculate the word with the max value, can receive a list
@@ -29,6 +29,9 @@ def max_word_value(wordlist=None):
     for word in wordlist:
         words_with_price[word] = calc_word_value(word)
 
+    # Одной строкой )
+    # return max(wordlist, key=calc_word_value)
+    # return max(wordlist or load_words(DICTIONARY), key=lambda w: calc_word_value(w))
     highest_word = max(words_with_price.items(), key=operator.itemgetter(1))[0]
     return highest_word
 
