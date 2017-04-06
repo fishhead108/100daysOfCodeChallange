@@ -1,10 +1,15 @@
-import operator
+import operator, os
 from data import DICTIONARY, LETTER_SCORES
 
-def load_words(filename):
+def load_words(filename=None):
     """Load dictionary into a list and return list"""
-    with open(filename, 'r') as file:
-        words = file.read().splitlines()
+    if filename is None:
+        filename = DICTIONARY
+
+    scriptpath = os.path.dirname(__file__)
+    filen = os.path.join(scriptpath, filename)
+    with open(filen, 'r') as wordsfile:
+        words = wordsfile.read().splitlines()
         return words
 
 def calc_word_value(word):
@@ -30,5 +35,4 @@ def max_word_value(wordlist=None):
 
 
 if __name__ == "__main__":
-    mywords = load_words(DICTIONARY)
-    print(max_word_value(mywords))
+    pass
