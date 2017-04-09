@@ -12,19 +12,29 @@ NUM_LETTERS = 7
 
 def draw_letters():
     """Pick NUM_LETTERS letters randomly. Hint: use stdlib random"""
-    return [POUCH[random.randint(0, len(POUCH),)] for _ in range(1, NUM_LETTERS+1)]
-
+    string = (POUCH[random.randint(0, len(POUCH),)] for _ in range(NUM_LETTERS))
+    return sorted(''.join(string).lower())
 
 def input_word(draw):
     """Ask player for a word and validate against draw.
     Use _validation(word, draw) helper."""
-    pass 
+    user_word = (input("Type the word: ")).lower()
+    if _validation(user_word, draw):
+        return user_word
 
 
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
-    pass
+    string = ''.join(draw)
+    if sorted(word) in sorted(string):
+
+        with open(DICTIONARY, 'r') as wordsfile:
+            words = wordsfile.read().splitlines()
+
+        if word in words:
+            return True
+
 
 
 # From challenge 01:
