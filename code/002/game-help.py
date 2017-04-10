@@ -12,29 +12,22 @@ NUM_LETTERS = 7
 
 def draw_letters():
     """Pick NUM_LETTERS letters randomly. Hint: use stdlib random"""
-    string = (POUCH[random.randint(0, len(POUCH),)] for _ in range(NUM_LETTERS))
-    return sorted(''.join(string).lower())
+    return [POUCH[random.randint(0, len(POUCH),)] for _ in range(NUM_LETTERS)]
 
 def input_word(draw):
     """Ask player for a word and validate against draw.
     Use _validation(word, draw) helper."""
-    user_word = (input("Type the word: ")).lower()
+    user_word = input("Form a valid word: ")
     if _validation(user_word, draw):
         return user_word
-
-
+    else:
+        return ''
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
-    string = ''.join(draw)
-    if sorted(word) in sorted(string):
-
-        with open(DICTIONARY, 'r') as wordsfile:
-            words = wordsfile.read().splitlines()
-
-        if word in words:
+    if len([char for char in word if char.upper() in draw]) == len(word):
+        if word.lower() in DICTIONARY:
             return True
-
 
 
 # From challenge 01:
@@ -50,13 +43,26 @@ def calc_word_value(word):
 def get_possible_dict_words(draw):
     """Get all possible words from draw which are valid dictionary words.
     Use the _get_permutations_draw helper and DICTIONARY constant"""
-    pass
+    generated_words = _get_permutations_draw(draw)
+    word_in_dict = [word for word in generated_words if word.lower() in DICTIONARY]
+    if word_in_dict:
+        return word_in_dict
+    else:
+        return ''
 
 
 def _get_permutations_draw(draw):
     """Helper for get_possible_dict_words to get all permutations of draw letters.
     Hint: use itertools.permutations"""
-    pass
+    # return [''.join(x) for x in itertools.permutations(draw)]
+    my_dict = []
+    min_length, max_length = 2, len(draw)
+    for n in range(min_length, max_length + 1):
+        for xs in itertools.permutations(draw, n):
+            my_dict.append(''.join(xs))
+
+    return my_dict
+
 
 
 # From challenge 01:
