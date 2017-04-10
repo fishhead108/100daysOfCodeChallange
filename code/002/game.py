@@ -27,20 +27,9 @@ def input_word(draw):
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
-    if word.isnumeric():
-        raise ValueError
-
-    elif [char for char in word if char.upper() not in draw]:
-        raise ValueError
-
-    elif list(word) == draw:
-        raise ValueError
-
     if len([char for char in word if char.upper() in draw]) == len(word):
         if word.lower() in DICTIONARY:
             return True
-        else:
-            raise ValueError
 
 
 # From challenge 01:
@@ -54,7 +43,6 @@ def calc_word_value(word):
 # get_possible_dict_words and _get_permutations_draw would be instance methods.
 # 'draw' would be set in the class constructor (__init__).
 def get_possible_dict_words(draw):
-    # TODO: не хватает 7 слов, теряются в листе
     """Get all possible words from draw which are valid dictionary words.
     Use the _get_permutations_draw helper and DICTIONARY constant"""
     generated_words = _get_permutations_draw(draw)
@@ -70,7 +58,8 @@ def _get_permutations_draw(draw):
     Hint: use itertools.permutations"""
     # return [''.join(x) for x in itertools.permutations(draw)]
     my_dict = []
-    for n in range(1, NUM_LETTERS + 1):
+    min_length, max_length = 2, len(draw)
+    for n in range(min_length, max_length + 1):
         for xs in itertools.permutations(draw, n):
             my_dict.append(''.join(xs))
 
