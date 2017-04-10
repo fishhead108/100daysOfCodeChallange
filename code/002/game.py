@@ -27,9 +27,20 @@ def input_word(draw):
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
+    if word.isnumeric():
+        raise ValueError
+
+    elif [char for char in word if char.upper() not in draw]:
+        raise ValueError
+
+    elif list(word) == draw:
+        raise ValueError
+
     if len([char for char in word if char.upper() in draw]) == len(word):
         if word.lower() in DICTIONARY:
             return True
+        else:
+            raise ValueError
 
 
 # From challenge 01:
