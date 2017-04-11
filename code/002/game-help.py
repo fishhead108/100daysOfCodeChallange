@@ -12,35 +12,19 @@ NUM_LETTERS = 7
 
 def draw_letters():
     """Pick NUM_LETTERS letters randomly. Hint: use stdlib random"""
-    return [POUCH[random.randint(0, len(POUCH), )] for _ in range(NUM_LETTERS)]
+    pass
 
 
 def input_word(draw):
     """Ask player for a word and validate against draw.
     Use _validation(word, draw) helper."""
-    user_word = input("Form a valid word: ")
-    if _validation(user_word, draw):
-        return user_word
-    else:
-        return ''
+    pass
+
 
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
-    if word.isnumeric():
-        raise ValueError
-
-    elif [char for char in word if char.upper() not in draw]:
-        raise ValueError
-
-    elif list(word) == draw:
-        raise ValueError
-
-    if len([char for char in word if char.upper() in draw]) == len(word):
-        if word.lower() in DICTIONARY:
-            return True
-        else:
-            raise ValueError
+    pass
 
 
 # From challenge 01:
@@ -54,27 +38,15 @@ def calc_word_value(word):
 # get_possible_dict_words and _get_permutations_draw would be instance methods.
 # 'draw' would be set in the class constructor (__init__).
 def get_possible_dict_words(draw):
-    # TODO: не хватает 7 слов, теряются в листе
     """Get all possible words from draw which are valid dictionary words.
     Use the _get_permutations_draw helper and DICTIONARY constant"""
-    generated_words = _get_permutations_draw(draw)
-    word_in_dict = [word for word in generated_words if word.lower() in DICTIONARY]
-    if word_in_dict:
-        return word_in_dict
-    else:
-        return ''
+    pass
 
 
 def _get_permutations_draw(draw):
     """Helper for get_possible_dict_words to get all permutations of draw letters.
     Hint: use itertools.permutations"""
-    # return [''.join(x) for x in itertools.permutations(draw)]
-    my_dict = []
-    for n in range(1, NUM_LETTERS + 1):
-        for xs in itertools.permutations(draw, n):
-            my_dict.append(''.join(xs))
-
-    return my_dict
+    pass
 
 
 # From challenge 01:
