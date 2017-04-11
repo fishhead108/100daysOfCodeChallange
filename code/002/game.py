@@ -14,6 +14,10 @@ NUM_LETTERS = 7
 def draw_letters():
     """Pick NUM_LETTERS letters randomly. Hint: use stdlib random"""
     return [POUCH[random.randint(0, len(POUCH), )] for _ in range(NUM_LETTERS)]
+    # I definitely need to read the documentation :D
+    """
+    return random.sample(POUCH, NUM_LETTERS)
+    """
 
 
 def input_word(draw):
@@ -24,6 +28,18 @@ def input_word(draw):
         return user_word
     else:
         return ''
+    """
+    #Answer:
+    while True:
+        word = input('Form a valid word: ').upper()
+        if not set(word) < set(draw):
+            print('One or more characters not in draw, try again')
+            continue
+        elif not word.lower() in DICTIONARY:
+            print('Not a valid dictionary word, try again')
+            continue
+        return word
+    """
 
 
 def _validation(word, draw):
@@ -49,6 +65,18 @@ def _validation(word, draw):
         else:
             raise ValueError
 
+    """
+    Answer:
+    for char in word.upper():
+        if char in draw:
+            draw.remove(char)
+        else:
+        raise ValueError("{} is not a valid word!".format(word))
+    if not word.lower() in DICTIONARY:
+        raise ValueError('Not a valid dictionary word, try again')
+    return word
+    """
+
 
 # From challenge 01:
 def calc_word_value(word):
@@ -63,8 +91,7 @@ def calc_word_value(word):
 def get_possible_dict_words(draw):
     """Get all possible words from draw which are valid dictionary words.
     Use the _get_permutations_draw helper and DICTIONARY constant"""
-    generated_words = _get_permutations_draw(draw)
-    word_in_dict = [word for word in generated_words if word.lower() in DICTIONARY]
+    word_in_dict = [word for word in _get_permutations_draw(draw) if word.lower() in DICTIONARY]
     if word_in_dict:
         return word_in_dict
     else:
