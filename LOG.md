@@ -80,6 +80,7 @@
 ##### (delete me or comment me out)
 
 **Today's Progress**: Finished with a day 2 of the challenge, all the test wer passed.
+Worked on pet project.
 
 **Thoughts:** 
 
