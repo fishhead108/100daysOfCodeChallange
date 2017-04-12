@@ -96,6 +96,12 @@ Worked on pet project.
 **Today's Progress**: 
 
 **Thoughts:** 
+- Explore filter(None, some_list) for filtering the content
+
+You can't use compiled pattern in findall(not only)
+>- re.match(TAG_HTML, content[1], re.I) will rase:
+>- ValueError: cannot process flags argument with a compiled pattern
+
 
 **Link to:**
 
