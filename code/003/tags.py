@@ -14,12 +14,16 @@ def get_tags():
     """Find all tags (TAG_HTML) in RSS_FEED.
     Replace dash with whitespace.
     Hint: use TAG_HTML.findall"""
+    with open(f"./{RSS_FEED}", 'r') as rssfile:
+        content = rssfile.readlines()
+
+    return [word.lower() for word in re.findall(TAG_HTML, content[1])]
 
 
 def get_top_tags(tags):
     """Get the TOP_NUMBER of most common tags
     Hint: use most_common method of Counter (already imported)"""
-    pass
+    return Counter.most_common(Counter(tags), TOP_NUMBER)
 
 
 def get_similarities(tags):
@@ -27,7 +31,14 @@ def get_similarities(tags):
     Hint 1: compare each tag, use for in for, or product from itertools (already imported)
     Hint 2: use SequenceMatcher (imported) to calculate the similarity ratio
     Bonus: for performance gain compare the first char of each tag in pair and continue if not the same"""
-    pass
+    return sorted(set([(x, y) for x, y in product(tags, repeat=2)
+                       if
+                       SequenceMatcher(None, x, y).ratio() >= SIMILAR
+                       and
+                       SequenceMatcher(None, x, y).ratio() != IDENTICAL
+                       ]
+                      )
+                  )
 
 
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ class test_tags(unittest.TestCase):
 
     def test_get_tags(self):
         self.assertEqual(len(self.tags), 189)
-        self.assertEqual(len(set(self.tags)), 100)
+        self.assertEqual(len(set(self.tags)), 101)
         self.assertEqual(self.tags.count('collections'), 4)
         self.assertEqual(self.tags.count('python'), 10)
 
