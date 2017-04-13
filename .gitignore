@@ -148,3 +148,5 @@ todo.sqlite
 /.idea/
 /config.py
 /app/config.py
+/code/004/venv/
+/code/004/config.py
