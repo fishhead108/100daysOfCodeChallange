@@ -104,6 +104,8 @@ You can't use compiled pattern in findall(not only)
 
 
 **Link to:**
+- [commits](https://github.com/fishhead108/100daysOfCodeChallange/commits/master/code/003)
+- [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/003/tags.py) 
 
 **Mood:**
 
@@ -112,10 +114,14 @@ You can't use compiled pattern in findall(not only)
 ##### (delete me or comment me out)
 
 **Today's Progress**: 
+Done with 3rd task
+stuck a little with get_similarities
 
 **Thoughts:** 
 
 **Link to:**
+- [commits](https://github.com/fishhead108/100daysOfCodeChallange/commits/master/code/003)
+- [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/003/tags.py) 
 
 **Mood:**
 
