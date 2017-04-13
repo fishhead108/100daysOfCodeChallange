@@ -100,23 +100,29 @@ You can't use compiled pattern in findall(not only)
 - [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/003/tags.py) 
 
 **Mood:**
-
+normal
 
 ### Day 9: April 13, 2017
 
 
 **Today's Progress**: 
 Done with 3rd task
-stuck a little with get_similarities
+stuck a little with get_similarities (task 3)
+Start on 4th task.
 
 **Thoughts:** 
+Namedtuple and CSV data
 
 **Link to:**
+* 003
 - [commits](https://github.com/fishhead108/100daysOfCodeChallange/commits/master/code/003)
-- [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/003/tags.py) 
+- [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/003/tags.py)
+* 004
+- [commits](https://github.com/fishhead108/100daysOfCodeChallange/commits/master/code/004)
+- [code](https://github.com/fishhead108/100daysOfCodeChallange/blob/master/code/004/usertweets.py)
 
 **Mood:**
-
+normal
 
 ### Day 10: April 14, 2017
 
