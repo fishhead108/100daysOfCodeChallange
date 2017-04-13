@@ -102,6 +102,10 @@ def _get_permutations_draw(draw):
     """Helper for get_possible_dict_words to get all permutations of draw letters.
     Hint: use itertools.permutations"""
     # return [''.join(x) for x in itertools.permutations(draw)]
+    """
+    for i in range(1, 8):
+        yield from list(itertools.permutations(draw, i))
+    """
     my_dict = []
     for n in range(1, NUM_LETTERS + 1):
         for xs in itertools.permutations(draw, n):
