@@ -23,6 +23,7 @@ def get_tags():
 def get_top_tags(tags):
     """Get the TOP_NUMBER of most common tags
     Hint: use most_common method of Counter (already imported)"""
+    # return Counter(tags).most_common(TOP_NUMBER)
     return Counter.most_common(Counter(tags), TOP_NUMBER)
 
 
