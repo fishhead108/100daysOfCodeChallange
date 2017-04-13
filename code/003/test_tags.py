@@ -38,7 +38,7 @@ class test_tags(unittest.TestCase):
 
     def test_get_similarities(self):
         similar_tags = dict(get_similarities(self.tags)).items()
-        self.assertEqual(len(similar_tags), 3)
+        self.assertEqual(len(similar_tags), 4)
         self.assertIn(('game', 'games'), similar_tags)
         self.assertIn(('challenge', 'challenges'), similar_tags)
         self.assertIn(('generator', 'generators'), similar_tags)
