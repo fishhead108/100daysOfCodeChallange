@@ -38,14 +38,6 @@
 
 ### Day 4: April 08, 2017 - PASS
 
-**Today's Progress**: PASS
-
-**Thoughts:** PASS
-
-**Link to:** PASS
-
-**Mood:** PASS
-
 ### Day 5: April 09, 2017
 
 **Today's Progress**: 
@@ -124,15 +116,8 @@ Namedtuple and CSV data
 **Mood:**
 normal
 
-### Day 10: April 14, 2017
+### Day 10: April 14, 2017 - PASS
 
-**Today's Progress**: 
-
-**Thoughts:** 
-
-**Link to:**
-
-**Mood:**
 
 ### Day 11: April 15, 2017
 
