@@ -41,9 +41,16 @@ class UserTweets(object):
         """Hint: use the user_timeline() method on the api you defined in init.
         See tweepy API reference: http://docs.tweepy.org/en/v3.5.0/api.html
         Use a list comprehension / generator to filter out fields
-        id_str created_at text (optionally use namedtuple)"""
+        id_str created_at text (optionally use namedtuple)
+        =================
+        ANSWER
+        
+        tweets = self.api.user_timeline(self.handle, count=NUM_TWEETS, max_id=self.max_id)
+        return (Tweet(s.id_str, s.created_at, s.text.replace('\n', '')) for s in raw_tweets)
+        """
+
         raw_tweets = [status for status in tweepy.Cursor(self.api.user_timeline, self.handle).items(NUM_TWEETS)]
-        return [Tweet(tweet.id_str, tweet.created_at, (tweet.text).strip()) for tweet in raw_tweets if int(tweet.id_str) <= self.max_id]
+        return [Tweet(tweet.id_str, tweet.created_at, tweet.text.replace('\n', '')) for tweet in raw_tweets if int(tweet.id_str) <= self.max_id]
 
     def _save_tweets(self):
         """Use the csv module (csv.writer) to write out the tweets.
@@ -52,7 +59,9 @@ class UserTweets(object):
         You can use writerow for the header, writerows for the rows"""
         with open(f'{self.output_file}', 'a') as f:
             writer = csv.writer(f)
-            writer.writerow(('id_str', 'created_at', 'text'))
+            writer.writerow(Tweet._fields)
+            # Answer
+            # writer.writerows(self._tweets)
             [writer.writerow(triple) for triple in self._tweets]
 
     def __len__(self):
