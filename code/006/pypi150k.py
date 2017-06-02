@@ -25,11 +25,11 @@ def fetch_date(package_name):
     # if r.status_code == requests.codes.ok:
     if r.status_code == 200:
         if len(r.json()['urls']) > 0:
-            time = parser.parse(r.json()['urls'][-1]['upload_time'])
-            packages_time[time] = package_name
+            time = r.json()['urls'][-1]['upload_time']
+            packages_time[package_name] = time
             packages.remove(package_name)
         else:
-            packages_time[None] = package_name
+            packages_time[package_name] = None
             packages.remove(package_name)
     else:
         pass
@@ -40,7 +40,11 @@ pool.map(fetch_date, packages)
 pool.close()
 pool.join()
 
-pickle.dump(packages_time, open("save.p", "wb"))
+pickle.dump(packages_time, open("normalTime.p", "wb"))
+
+pack = pickle.load(open("normalTime.p", "rb"))
+dct = sorted(pack.items(), key=lambda p: p[1], reverse=True)
+
 
 if __name__ == "__main__":
     pass
