@@ -4,15 +4,7 @@ import pickle
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
-from datetime import datetime
-import logging
-import os
-from time import mktime
-import sys
 
-import bs4
-import feedparser
-import requests
 
 import datetime as dt
 
