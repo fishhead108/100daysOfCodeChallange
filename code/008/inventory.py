@@ -29,8 +29,10 @@ class Room:
 
 def list_rooms(rooms):
     for room in rooms:
-        print(f"ROOM: {room.name}:^8")
+        print(f"\n{room.name.upper():<8}")
         print(f"{'ITEM':<8} {'COST':<8}")
         for item in room.items.items():
             print("{:<8} {:<8}".format(*item))
-    print(f"\nTOTAL: {sum(rooms.items.values()):>4}")
+
+    money = [list(room.items.values()) for room in rooms]
+    print(f"\nTOTAL: {sum([y for x in money for y in x]):>5}")
