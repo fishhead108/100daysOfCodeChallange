@@ -3,7 +3,6 @@ Create some sort of program shell with a menu system around this. ie, "Which roo
 
 If you're really game, allow users to create rooms and update information.
 
-You could even make an API with Flask or your preferred framework
 
 Have persistent storage of the data. sqlite3 = stdlib and light-weight, but feel free to use your preferred DB / module.
 """
@@ -61,7 +60,7 @@ class Room:
         return len(self.items)
 
 
-def menu():
+def main_menu():
     print("""
     1). Show available rooms          +--+
     2). Add new room                  |  |
@@ -84,15 +83,40 @@ def menu():
                                     +---------------------------+-----+
     """)
 
-def main():
-    house = House()
-    house.add_room(Room(name='bedroom', items={'cup': 3, 'bath': 200, 'soap': 1, 'item4': 12, 'item5': 33}))
-    house.add_room(Room(name='bathroom', items={'cup': 4, 'bath': 100, 'soap': 6, 'item4': 52, 'item5': 23}))
-    house.add_room(Room(name='kitchen', items={'cup': 5, 'bath': 20, 'soap': 5, 'item4': 4, 'item5': 53}))
-    house.add_room(Room(name='baby room', items={'cup': 6, 'bath': 500, 'soap': 2, 'item4': 32, 'item5': 63}))
-    house.add_room(Room(name='living room', items={'cup': 73, 'bath': 50, 'soap': 3, 'item4': 22, 'item5': 73}))
 
-    house.list_rooms()
+
+def main():
+    loop = True
+    while loop:
+        main_menu()
+        choice = input("Enter your choice [1-5]: ")
+        if choice == 1:
+            print("Menu 1 has been selected")
+            ## You can add your code or functions here
+        elif choice == 2:
+            print("Menu 2 has been selected")
+            ## You can add your code or functions here
+        elif choice == 3:
+            print("Menu 3 has been selected")
+            ## You can add your code or functions here
+        elif choice == 4:
+            print("Menu 4 has been selected")
+            ## You can add your code or functions here
+        elif choice == 5:
+            print("Menu 5 has been selected")
+            ## You can add your code or functions here
+            loop = False  # This will make the while loop to end as not value of loop is set to False
+        else:
+            # Any integer inputs other than values 1-5 we print an error message
+            input("Wrong option selection. Enter any key to try again..")
+        # house = House()
+        # house.add_room(Room(name='bedroom', items={'cup': 3, 'bath': 200, 'soap': 1, 'item4': 12, 'item5': 33}))
+        # house.add_room(Room(name='bathroom', items={'cup': 4, 'bath': 100, 'soap': 6, 'item4': 52, 'item5': 23}))
+        # house.add_room(Room(name='kitchen', items={'cup': 5, 'bath': 20, 'soap': 5, 'item4': 4, 'item5': 53}))
+        # house.add_room(Room(name='baby room', items={'cup': 6, 'bath': 500, 'soap': 2, 'item4': 32, 'item5': 63}))
+        # house.add_room(Room(name='living room', items={'cup': 73, 'bath': 50, 'soap': 3, 'item4': 22, 'item5': 73}))
+        #
+        # house.list_rooms()
 
 
 if __name__ == '__main__':
