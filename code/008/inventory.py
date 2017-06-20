@@ -7,7 +7,6 @@ If you're really game, allow users to create rooms and update information.
 Have persistent storage of the data. sqlite3 = stdlib and light-weight, but feel free to use your preferred DB / module.
 """
 
-
 from shutil import get_terminal_size
 
 
@@ -86,6 +85,7 @@ def main_menu():
                                     +---------------------------+-----+
     """)
 
+
 def show_room_menu():
     print("""
     1). Show available rooms
@@ -99,11 +99,14 @@ def add_room_menu():
         2). Exit
         """)
 
+
 def add_item_to_room_menu():
     pass
 
+
 def removeitem_from_room():
     pass
+
 
 def main():
     house = House()
@@ -113,42 +116,27 @@ def main():
         choice = int(input("Enter your choice [1-5]: "))
 
         if choice == 1:
-            menu1 = True
-            while menu1:
-                # TODO: clean STDOUT
-                show_room_menu()
-                choice = int(input("Enter your choice [1-2]: "))
-                if choice == 1:
-                    house.list_rooms()
-                elif choice == 2:
-                    menu1 = False
-                else:
-                    pass
+            house.list_rooms()
 
         elif choice == 2:
-            menu2 = True
-            while menu2:
-                # TODO: clean STDOUT
-                add_room_menu()
-                choice = int(input("Enter your choice [1-2]: "))
-                if choice == 1:
-                    room_name = input("Enter room name: ")
-                    raw_items = input("Enter items with cost. Example - soap: 20, table: 30: ")
-                    items = {}
-                    for item in raw_items.split(','):
-                        key, value = item.split(':')
-                        items.update({key.strip(): int(value.strip())})
-                    house.add_room(Room(name=room_name, items=items))
-                    menu2 = False
-                elif choice == 2:
-                    menu2 = False
-                else:
-                    pass
+            room_name = input("Enter room name: ")
+            raw_items = input("Enter items with cost. Example - soap: 20, table: 30: ")
+            items = {}
+            for item in raw_items.split(','):
+                key, value = item.split(':')
+                items.update({key.strip(): int(value.strip())})
+            house.add_room(Room(name=room_name, items=items))
 
         elif choice == 3:
-            print("Menu 3 has been selected")
-            break
-            ## You can add your code or functions here
+            room_name = input("Enter room name to add new things: ")
+            raw_items = input("Enter items with cost. Example - soap: 20, table: 30: ")
+            items = {}
+            for item in raw_items.split(','):
+                key, value = item.split(':')
+                items.update({key.strip(): int(value.strip())})
+
+
+
         elif choice == 4:
             print("Menu 4 has been selected")
             break
@@ -159,14 +147,14 @@ def main():
         else:
             # Any integer inputs other than values 1-5 we print an error message
             input("Wrong option selection. Enter any key to try again..")
-        #
-        # house.add_room(Room(name='bedroom', items={'cup': 3, 'bath': 200, 'soap': 1, 'item4': 12, 'item5': 33}))
-        # house.add_room(Room(name='bathroom', items={'cup': 4, 'bath': 100, 'soap': 6, 'item4': 52, 'item5': 23}))
-        # house.add_room(Room(name='kitchen', items={'cup': 5, 'bath': 20, 'soap': 5, 'item4': 4, 'item5': 53}))
-        # house.add_room(Room(name='baby room', items={'cup': 6, 'bath': 500, 'soap': 2, 'item4': 32, 'item5': 63}))
-        # house.add_room(Room(name='living room', items={'cup': 73, 'bath': 50, 'soap': 3, 'item4': 22, 'item5': 73}))
-        #
-        # house.list_rooms()
+            #
+            # house.add_room(Room(name='bedroom', items={'cup': 3, 'bath': 200, 'soap': 1, 'item4': 12, 'item5': 33}))
+            # house.add_room(Room(name='bathroom', items={'cup': 4, 'bath': 100, 'soap': 6, 'item4': 52, 'item5': 23}))
+            # house.add_room(Room(name='kitchen', items={'cup': 5, 'bath': 20, 'soap': 5, 'item4': 4, 'item5': 53}))
+            # house.add_room(Room(name='baby room', items={'cup': 6, 'bath': 500, 'soap': 2, 'item4': 32, 'item5': 63}))
+            # house.add_room(Room(name='living room', items={'cup': 73, 'bath': 50, 'soap': 3, 'item4': 22, 'item5': 73}))
+            #
+            # house.list_rooms()
 
 
 if __name__ == '__main__':
