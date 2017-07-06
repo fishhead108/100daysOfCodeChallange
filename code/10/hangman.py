@@ -8,35 +8,34 @@ ASCII = list(ascii_lowercase)
 HANG_GRAPHICS = hang_graphics()
 
 
+def check_input_char(char, finish_word, present_word):
+    if char in present_word:
+        print("You already know this character")
+        return True
+
+    if char in finish_word:
+        for index, character in enumerate(finish_word):
+
+            if character == char:
+                present_word[index] = character
+
+                if present_word == finish_word:
+                    print(f"You WIN !\nAnswer is: {word}")
+                    exit(0)
+
+        return True
+
+
 def main(word):
-
-    def check_input_char(char):
-        if char in present_word:
-            print("You already know this character")
-            return True
-
-        if char in finish_word:
-            for index, character in enumerate(finish_word):
-
-                if character == char:
-                    present_word[index] = character
-
-                    if present_word == finish_word:
-                        print(f"You WIN !\nAnswer is: {secret_word}")
-                        exit(0)
-
-            return True
-
-    secret_word = word
-    finish_word = ([char for char in secret_word])
-    present_word = (['_' if c in ASCII else c for c in secret_word])
+    finish_word = ([char for char in word])
+    present_word = (['_' if c in ASCII else c for c in word])
 
     while True:
 
         print("".join(present_word))
         char = (input("Enter the letter: ")).lower()
 
-        if check_input_char(char):
+        if check_input_char(char, finish_word, present_word):
             pass
 
         else:
