@@ -1,3 +1,8 @@
+import os
+import fnmatch
+import re
+import collections
+
 """
 Turn the following unix pipeline into Python code using generators
 
@@ -15,21 +20,39 @@ $ for i in ../*/*py; do grep ^import $i|sed 's/import //g' ; done | sort | uniq 
    1 datetime
 """
 
+
 def gen_files(pat):
-    pass
+    dir = os.path.dirname(pat.split('*')[0])
+    ext = os.path.basename(pat)
+    for path, dirlist, filelist in os.walk(dir):
+        for name in fnmatch.filter(filelist, ext):
+            yield os.path.join(path, name)
+
 
 def gen_lines(files):
-    pass
+    for file in files:
+        for line in open(file):
+            yield line
+
 
 def gen_grep(lines, pattern):
-    pass
+    patc = re.compile(pattern)
+    for line in lines:
+        if patc.search(line):
+            yield (line.split()[1])
+
 
 def gen_count(lines):
-    pass
+    lines = collections.Counter(lines).most_common()
+    for line in lines:
+        name, num = line
+        print(f'{num:2} {name.strip(",")}')
 
 
 if __name__ == "__main__":
     # call the generators, passing one to the other
     files = gen_files('../*/*.py')
     lines = gen_lines(files)
-    # etc
+    greps = gen_grep(lines, '^import')
+    clean = gen_count(greps)
+    print(clean)
