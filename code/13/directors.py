@@ -35,11 +35,8 @@ def get_average_scores(directors: dict):
     for director, values in directors.items():
         if len(values) >= MIN_MOVIES:
             avg_score = round(_calc_mean(values), 1)
-            new_directors[director] = sorted(values, key=lambda x: x.imdb_score) + [avg_score, ]
+            new_directors[director] = sorted(values, key=lambda x: x.imdb_score, reverse=True), avg_score
 
-
-    #exp = sorted(new_directors.items(), key=lambda k, v: k, v[-1])
-    exp = sorted(new_directors.items(), key=operator.itemgetter(-1))
     return new_directors
 
 
@@ -53,10 +50,12 @@ def print_results(directors):
     print his/her movies also ordered by highest rated movie.
     See http://pybit.es/codechallenge13.html for example output'''
 
-    for index, director in enumerate(directors):
+    _sort = sorted(directors, key=lambda director: directors[director][-1], reverse=True)
+
+    for index, director in enumerate(_sort, 1):
         print(f'\n{index}. {director:<51} {directors[director][-1]}')
         print('-' * 60)
-        for movie in directors[director]:
+        for movie in directors[director][0]:
             if not isinstance(movie, float):
                 print(f'{movie.title_year}] {movie.movie_title:<50} {movie.imdb_score}')
 
