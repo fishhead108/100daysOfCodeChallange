@@ -1,8 +1,8 @@
 from directors import get_movies_by_director, get_average_scores, _calc_mean
-
+MOVIE_DATA = 'movie_metadata.csv'
 
 def test():
-    directors = get_movies_by_director()
+    directors = get_movies_by_director(MOVIE_DATA)
 
     assert 'Sergio Leone' in directors
     assert 'Andrew Stanton' in directors  # has 3 movies, but not yet filtered
