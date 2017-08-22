@@ -18,8 +18,7 @@ def get_movies_by_director(filename: str) -> dict:
     Data = namedtuple("Data", ('movie_title', 'title_year', 'imdb_score'))
 
     with open(filename, 'rt', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
+        for row in csv.DictReader(f):
             if row['director_name'] not in my_movies:
                 my_movies[row['director_name']] = [
                     Data((row['movie_title']).strip(), row['title_year'], row['imdb_score'])]
@@ -32,17 +31,17 @@ def get_movies_by_director(filename: str) -> dict:
 def get_average_scores(directors: dict):
     '''Filter directors with < MIN_MOVIES and calculate averge score'''
     new_directors = {}
-    for director, values in directors.items():
-        if len(values) >= MIN_MOVIES:
-            avg_score = round(_calc_mean(values), 1)
-            new_directors[director] = sorted(values, key=lambda x: x.imdb_score, reverse=True), avg_score
+    for director, movies in directors.items():
+        if len(movies) >= MIN_MOVIES:
+            avg_score = round(_calc_mean(movies), 1)
+            new_directors[director] = sorted(movies, key=lambda movie: movie.imdb_score, reverse=True), avg_score
 
     return new_directors
 
 
 def _calc_mean(movies):
     '''Helper method to calculate mean of list of Movie namedtuples'''
-    return mean([float(x.imdb_score) for x in movies])
+    return mean([float(movie.imdb_score) for movie in movies])
 
 
 def print_results(directors):
@@ -50,9 +49,9 @@ def print_results(directors):
     print his/her movies also ordered by highest rated movie.
     See http://pybit.es/codechallenge13.html for example output'''
 
-    _sort = sorted(directors, key=lambda director: directors[director][-1], reverse=True)
+    _sorter_by_avg = sorted(directors, key=lambda director: directors[director][-1], reverse=True)
 
-    for index, director in enumerate(_sort, 1):
+    for index, director in enumerate(_sorter_by_avg, 1):
         print(f'\n{index}. {director:<51} {directors[director][-1]}')
         print('-' * 60)
         for movie in directors[director][0]:
