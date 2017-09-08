@@ -14,18 +14,18 @@ Movie = namedtuple('Movie', 'title year score')
 def get_movies_by_director(filename: str) -> dict:
     '''Extracts all movies from csv and stores them in a dictionary
     where keys are directors, and values is a list of movies (named tuples)'''
-    my_movies = {}
+    directors = {}
     Data = namedtuple("Data", ('movie_title', 'title_year', 'imdb_score'))
 
     with open(filename, 'rt', encoding='utf-8') as f:
         for row in csv.DictReader(f):
-            if row['director_name'] not in my_movies:
-                my_movies[row['director_name']] = [
+            if row['director_name'] not in directors:
+                directors[row['director_name']] = [
                     Data((row['movie_title']).strip(), row['title_year'], row['imdb_score'])]
             else:
-                my_movies[row['director_name']] += [
+                directors[row['director_name']] += [
                     Data((row['movie_title']).strip(), row['title_year'], row['imdb_score'])]
-    return my_movies
+    return directors
 
 
 def get_average_scores(directors: dict):
