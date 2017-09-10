@@ -1,27 +1,24 @@
 {% extends "base.html" %}
 {% block title %} - Home{% endblock %}
 {% block content %}
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Task</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for u in data %}
-                <tr>
-                    <td>{{ u.id }}</td>
-                    <td>{{ u.task }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
     <form method="POST" action="/">
         {{ form.csrf_token }}
-        <div>{{ form.item }}</div>
+        <div>{{ form.item }}
+            <input class="btn btn-default" type="submit" value="Add">
+        </div>
     </form>
+    <div class="container">
+        {% for u in data %}
+            <div class="row" id={{ u.id }}>
+                <div class="col-md-2" id="task">{{ u.id }}</div>
+                <div class="col-md-4">{{ u.task }}</div>
+                <div class="col-md-2">"21/06/2017"</div>
+                <div class="col-md-4">
+                    <form method="POST" action="/delete">
+                        <input class="btn btn-danger" type="submit" name="delete" value="delete">
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
