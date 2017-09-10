@@ -8,14 +8,14 @@
         </div>
     </form>
     <div class="container">
-        {% for u in data %}
-            <div class="row" id={{ u.id }}>
-                <div class="col-md-2" id="task">{{ u.id }}</div>
-                <div class="col-md-4">{{ u.task }}</div>
+        {% for item in data %}
+            <div class="row"}>
+                <div class="col-md-2" id="task">{{ item.id }}</div>
+                <div class="col-md-4">{{ item.task }}</div>
                 <div class="col-md-2">"21/06/2017"</div>
                 <div class="col-md-4">
-                    <form method="POST" action="/delete">
-                        <input class="btn btn-danger" type="submit" name="delete" value="delete">
+                    <form method="POST" action="/delete/{{ item.id }}">
+                        <input class="btn btn-danger" type="submit" name={{ item.id }} value="delete">
                     </form>
                 </div>
             </div>

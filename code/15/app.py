@@ -25,15 +25,18 @@ def index():
         db.session.add(t)
         db.session.commit()
         #flash("Added new task")
+        db.session.close()
         return redirect(url_for("index"))
         # return render_template('template.html', data=data, form=form)
 
     data = Todos.query.all()
     return render_template('template.html', data=data, form=form)
 
-@app.route('/delete')
-def delete():
-    pass
+@app.route('/delete/<int:id>', methods=["POST"])
+def delete(id):
+    Todos.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for("index"))
 
 
 if __name__ == '__main__':
